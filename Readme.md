@@ -1,1 +1,1 @@
-These are all Cloned projects that i clond for learning.
+These are all Cloned projects that i cloned for learning.
