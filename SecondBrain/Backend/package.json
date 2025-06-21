@@ -4,8 +4,8 @@
   "description": "",
   "main": "Server.ts",
   "scripts": {
-    "test": "npx tsc -b",
-    "start": "cd dist && node Server.js",
+    "test": "tsc -b",
+    "start": "cd dist && cd Server && node Server.js",
     "dev": "npm run test && npm run start"
   },
   "keywords": [],

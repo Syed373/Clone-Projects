@@ -12,7 +12,7 @@ const ContentSchema = new mongoose.Schema({
     type: { type: String, enum: ContentTypes, required: true },
     title: { type: String, required: true },
     tags: [{ type: mongoose.Schema.Types.ObjectId, ref: 'TagModel' }],
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'UserModel' }
+    userId: { type: mongoose.Schema.Types.ObjectId, required:true, ref: 'UserModel' }
 })
 
 export const ContentModel = mongoose.model("ContentModel", ContentSchema)

@@ -1,5 +1,6 @@
-require('dotenv').config({path:`Backend/../../.env`})
+require('dotenv').config({ path: `Backend/../../.env` })
 import mongoose from 'mongoose'
+
 const url = process.env.DB_URL
 
 mongoose.connect(url!);
