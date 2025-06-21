@@ -3,6 +3,8 @@ import express from 'express'
 import jwt from 'jsonwebtoken'
 import { UserModel } from './db/User';
 import { ContentModel } from './db/Content';
+import { ShareModel } from './db/Share';
+import { randoms } from './utils/randoms';
 
 const app = express();
 app.use(express.json())
@@ -130,7 +132,26 @@ app.delete('/api/v1/content', async (req, res) => {
     }
 
 })
-app.post('/api/v1/brain/share', (req, res) => {
+app.post('/api/v1/brain/share', async (req, res) => {
+    const {share} = req.body;
+    const {userId} =req.body;
+    if(share){
+        await ShareModel.create({
+            hash: randoms(10),
+            "userId": userId
+        })
+        res.status(200).json({
+            message: "Link Generated"
+        })
+    }else{
+        await ShareModel.deleteOne({
+            "userId": userId
+        })
+        res.status(200).json({
+            message: "Link Deleated"
+        })
+    }
+
     
 })
 app.get('/api/v1/brain/share', (req, res) => {

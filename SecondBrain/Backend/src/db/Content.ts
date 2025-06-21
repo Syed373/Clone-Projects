@@ -1,7 +1,5 @@
 require('dotenv').config({ path: `Backend/../../.env` })
 import mongoose from 'mongoose'
-import { TagModel } from './Tag'
-import { UserModel } from './User'
 
 const url = process.env.DB_URL
 
@@ -13,8 +11,8 @@ const ContentSchema = new mongoose.Schema({
     link: { type: String, required: true },
     type: { type: String, enum: ContentTypes, required: true },
     title: { type: String, required: true },
-    tags: [{ type: mongoose.Schema.Types.ObjectId, ref: TagModel }],
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: UserModel }
+    tags: [{ type: mongoose.Schema.Types.ObjectId, ref: 'TagModel' }],
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'UserModel' }
 })
 
 export const ContentModel = mongoose.model("ContentModel", ContentSchema)
